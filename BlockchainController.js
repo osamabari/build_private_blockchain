@@ -38,7 +38,7 @@ class BlockchainController {
 
     // Endpoint that allows user to request Ownership of a Wallet address (POST Endpoint)
     requestOwnership() {
-        this.app.post("/requestValidation", async (req, res) => {
+        this.app.post("/request-validation", async (req, res) => {
             if(req.body.address) {
                 const address = req.body.address;
                 const message = await this.blockchain.requestMessageOwnershipVerification(address);
@@ -55,7 +55,7 @@ class BlockchainController {
 
     // Endpoint that allow Submit a Star, yu need first to `requestOwnership` to have the message (POST endpoint)
     submitStar() {
-        this.app.post("/submitstar", async (req, res) => {
+        this.app.post("/submit-star", async (req, res) => {
             if(req.body.address && req.body.message && req.body.signature && req.body.star) {
                 const address = req.body.address;
                 const message = req.body.message;
